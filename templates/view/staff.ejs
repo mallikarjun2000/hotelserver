@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    See All Services: <br>
+    <div id = 'services'>
+    </div><br>
+    Add service: <br><br>
+    <div>
+        <form action = '/staff/addService' method = 'POST'>
+            name: <input type="text" name = "name" placeholder="name"/><br><br>
+            desc: <input type="text" name = "desc" placeholder="description"/><br><br>
+            img: <input type="text" name = "img" placeholder="image"/><br><br>
+            price: <input type="number" name = "price" placeholder="price"/><br><br>
+            discount: <input type="number" name = "discount" placeholder="discount"/><br><br>
+            <input type = 'submit'/> <br><br>
+        </form>
+    </div>
+    See all guests:<br><br>
+    <div id = 'guests'></div><br><br>
+
+    Get guest Details: <br><br>
+    here
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        console.log(result);
+    </script>
+</body>
+</html>
