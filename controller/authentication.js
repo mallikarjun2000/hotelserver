@@ -5,29 +5,33 @@ const home = (req, res) => {
 }
 
 const login = (req, res) => {
-    var email = req.body.lemail;
-    var password = req.body.lpassword;
+    var email = req.body.data.email;
+    var password = req.body.data.password;
     User.findOne({email})
     .then((result) => {
-       if(result.password == password) {
-        if(result.role == 'guest') {
-            res.send('guest');
+        if(result){
+            if(result.password == password) {
+                res.send(result);
+            }else {
+                res.send('invalid credentials');
+            }
         }else {
-            res.redirect('/staff');
-            res.send(result);
-           // res.render('staff', {data:result});
+            res.send('invalid credentials');
         }
-       }else {
-           res.send('invalid credentials');
-       }
     })
     .catch((err) => console.log(err));
 }
 
 const register = (req, res) => {
-    const user = new User(req.body);
+    const user = new User({
+        role: req.body.data.role,
+        name: req.body.data.name,
+        email: req.body.data.email,
+        password: req.body.data.password, 
+        phone: req.body.data.phone
+    });
     user.save()
-    .then((result) => res.send('created'))
+    .then((result) => res.send(result))
     .catch((err) => console.log(err));
 }
 
